@@ -39,6 +39,7 @@ export default observer(function Home() {
               args: [store.content]
             });
           }
+          window.close()
         });
       }} >输入</Button>
     </Space>
@@ -46,6 +47,7 @@ export default observer(function Home() {
 })
 
 function clickAndSetText(str: string) {
+
   // alert("ffff")
 
   var inputElement: any = document.querySelector('#prompt-textarea');
@@ -55,23 +57,38 @@ function clickAndSetText(str: string) {
   console.log("#prompt-textarea")
   var event = new Event('input', { bubbles: true, cancelable: true });
   inputElement.dispatchEvent(event);
-   setTimeout(() => {
-     let sendButton : any = document.querySelector('button[data-testid="fruitjuice-send-button"]');
-     sendButton.click();
-     setTimeout(() => {
-      const elements = document.querySelectorAll('[class^="react-scroll-to-bottom--css"]');
-      if(elements && elements.length > 0) {
-         const div = elements[0]
-         div.scrollTop = div.scrollHeight - div.clientHeight;
+  setTimeout(() => {
+    let sendButton: any = document.querySelector('button[data-testid="fruitjuice-send-button"]');
+    sendButton.click();
+
+    setTimeout(() => {
+      const element: any = document.querySelector('.cursor-pointer.absolute.z-10.rounded-full.bg-clip-padding.border.text-token-text-secondary');
+
+      if (element) {
+        // 这里是找到元素后的操作
+        console.log(element);
+        element.click()
       }
 
-       
-     },300)
-   },800)
-   chrome.windows.getCurrent(function(window: any) {
-    chrome.windows.remove(window.id);
-  });
-  
+
+    }, 1300);
+
+    setTimeout(() => {
+      const elements = document.querySelectorAll('[class^="react-scroll-to-bottom--css"]');
+      if (elements && elements.length > 0) {
+        const div = elements[0]
+        div.scrollTop = div.scrollHeight - div.clientHeight;
+      }
+
+
+    }, 1000)
+  }, 800)
+
+  // chrome.windows.getCurrent(function (window: any) {
+  //   chrome.windows.remove(window.id);
+  // });
+  // window.close()
+
 
 }
 
