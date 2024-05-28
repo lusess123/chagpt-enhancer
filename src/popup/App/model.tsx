@@ -115,7 +115,7 @@ create you know 10 different accounts verify that they're a real human right
 当我说继续的时候， 但是你已经翻译完了， 那就直接说出来，并且做个整个段落的总结，特别强调，不要重复已经翻译过的，如果你老是重复，我会很生气，并且再也不订阅了。
 另外也不要出现明明还没有翻译完，就说翻译完的情况，这样我也会很生气
 
-这个提示已经结束，请等待我给你的输入。
+这个提示已经结束，你不用回复我，请等待我给你的输入。
 `
 
 const model = types.model("Web-Store", {
