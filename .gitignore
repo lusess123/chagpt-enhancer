@@ -38,3 +38,4 @@ node_modules# extension
 extension/*
 !extension/manifest.json
 !extension/background.js
+!extension/icons/
