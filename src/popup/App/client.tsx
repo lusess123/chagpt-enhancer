@@ -42,9 +42,27 @@ export default observer(function Home() {
           window.close()
         });
       }} >输入</Button>
+      <Button onClick={()=>{
+          // 示例调用
+           fetchDataFromGitHub('https://raw.githubusercontent.com/CHENJIAMIAN/awesome-chatgpt-prompts-zh-CN/main/Aiprm_Prompts-Prompt-zh-CN.json');
+
+      }}>提示词</Button>
     </Space>
   </Card></Warpper>
 })
+
+async function fetchDataFromGitHub(url: string) {
+  const response:any = await new Promise((resolve) => {
+     chrome.runtime.sendMessage({ fetchData: url }, resolve);
+  });
+  if (response && response.success) {
+    console.log('Data:', response.data);
+  } else {
+    console.error('Error:', response && response.error);
+  }
+}
+
+
 
 function clickAndSetText(str: string) {
 

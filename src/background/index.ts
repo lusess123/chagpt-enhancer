@@ -42,3 +42,16 @@ runtime.onInstalled.addListener(() => {
     console.log('[background] loaded ')
   })
 })
+
+
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+  debugger;
+  console.log(request)
+  if (request.fetchData) {
+    fetch(request.fetchData)
+      .then(response => response.json())
+      .then(data => sendResponse({ success: true, data }))
+      .catch(error => sendResponse({ success: false, error: error.message }));
+  }
+  return true;
+});
